@@ -9,13 +9,13 @@ class ItemDAO:
         self.DB_NAME = db_name
     
     def get_db_connection(self):
-        """Cria e retorna uma conexão com o banco de dados."""
+
         conn = sqlite3.connect(self.DB_NAME)
         conn.row_factory = sqlite3.Row 
         return conn
 
     def add_item(self, item: Item):
-        """Adiciona um objeto Post ao banco de dados."""
+
         conn = self.get_db_connection()
         cursor = conn.cursor()
         cursor.execute(
@@ -26,7 +26,6 @@ class ItemDAO:
         conn.close()
 
     def fetch_all_itens(self) -> List[Item]:
-        """Busca todos os posts e retorna uma lista de objetos Post."""
         conn = self.get_db_connection()
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM item ORDER BY created_at DESC")
@@ -43,6 +42,23 @@ class ItemDAO:
             ) for row in rows
         ]
 
+    conn = sqlite3.connect('item.db')
+
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS item (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        objeto TEXT NOT NULL,
+        descricao TEXT NOT NULL,
+        quantidade TEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+    """)
+    conn.commit()
+    conn.close()
+
+    print("Banco de dados e tabela 'item' criados com sucesso!")
         
 
   
