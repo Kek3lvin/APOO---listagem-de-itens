@@ -19,15 +19,15 @@ if submit_button:
 st.markdown("---")
 
 
-st.header("Itens recentemente adicionados")
+st.header("Itens recentemente adicionados") 
 
 all_itens = ItemController.get_all_itens()
 
 if not all_itens:
-    st.info("Ainda não há itens listados.")
-else:
-    for item in all_itens:
+    st.info("Ainda não há itens listados.")  # 
+else:                                               
+    for item in all_itens: 
         st.subheader(item.nome)
-        st.text(f'Quantidade: {item.quantidade}')
         st.text(item.descricao)
+        st.text(f'Quantidade: {item.quantidade}')
         st.markdown("---")
