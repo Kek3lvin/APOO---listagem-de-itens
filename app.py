@@ -14,11 +14,10 @@ with st.form(key="new_item_form", clear_on_submit=True):
 
 if submit_button:
     ItemController.add_new_item(objeto, descricao, quantidade)
-    st.rerun() # 
+    st.rerun() 
 
 st.markdown("---")
 
-# --- EXIBIÇÃO DOS POSTS ---
 st.header("Itens inseridos recentemente")
 
 all_itens = ItemController.get_all_itens()
