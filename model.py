@@ -4,7 +4,7 @@ from datetime import datetime
 
 @dataclass
 class Item:
-    nome: str
+    objeto: str
+    quantidade: str
     descricao: str
-    quantidade: int
     id: Optional[int] = None

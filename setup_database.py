@@ -1,18 +1,18 @@
 import sqlite3
 
-conn = sqlite3.connect('itens.db')
+conn = sqlite3.connect('item.db')
 
 cursor = conn.cursor()
 
 cursor.execute("""
-CREATE TABLE IF NOT EXISTS itens (
+CREATE TABLE IF NOT EXISTS item (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome TEXT NOT NULL,
+    objeto TEXT NOT NULL,
     descricao TEXT NOT NULL,
-    quantidade TEXT NOT NULL
+    quantidade TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 """)
-
 conn.commit()
 conn.close()
 
